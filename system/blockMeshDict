@@ -38,3 +38,57 @@ blocks
 edges
 (
 );
+boundary
+(
+    atmosphere
+    {
+       // type wall;
+         type patch;
+        faces
+        (
+            (3 7 6 2)
+        );
+    }
+    lowerWall
+    {
+        type wall;
+        faces
+        (
+            (1 5 4 0)
+        );
+    }
+    leftWall
+    {
+          // type wall;
+         type cyclic;
+         neighbourPatch rightWall;
+        faces
+        (
+            (0 4 7 3)
+        );
+    }
+    rightWall
+    {
+          // type wall;
+        // type symmetryPlane;
+         type cyclic;
+         neighbourPatch leftWall;
+        faces
+ (
+            (2 6 5 1)
+        );
+    }
+    frontAndBack
+    {
+        type empty;
+        faces
+        (
+            (0 3 2 1)
+            (4 5 6 7)
+        );
+    }
+);
+
+mergePatchPairs
+(
+);
