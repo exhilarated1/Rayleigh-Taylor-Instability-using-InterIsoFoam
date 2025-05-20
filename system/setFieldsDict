@@ -1,0 +1,40 @@
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      setFieldsDict;
+}
+defaultFieldValues
+(
+    volScalarFieldValue alpha.water 0
+);
+
+regions
+(
+    // boxToCell
+    // {
+    //     box (-0.5 0 -0.1) (0.5 2 0.1);
+    //     fieldValues
+    //     (
+    //         volScalarFieldValue alpha.water 0
+    //     );
+    // }
+
+    surfaceToCell
+    {
+        file                                                                "perturbedblock.stl";
+        useSurfaceOrientation false;
+        outsidePoints                           ((0 -0.1 0));
+        includeCut                                              false;
+        includeInside                           true;
+        includeOutside                          false;
+        nearDistance                                    -1;
+        curvature                                               0.9;
+        fieldValues
+        (
+                        volScalarFieldValue alpha.water 1
+        );
+    }
+);
